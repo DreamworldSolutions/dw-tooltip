@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Dw tooltip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="dw tooltip">
+    <style>
+      button {
+        width: 100px;
+        height: 30px;
+        margin: 10px;
+      }
+      button#forthButton {
+        margin-left: 100px;
+      }
+      div#disableBtn {
+        width: 150px;
+      }
+      .tippy-tooltip.tomato-theme {
+        background-color: tomato;
+        color: yellow;
+      }
+
+      .tippy-tooltip.tomato-theme[data-animatefill] {
+        background-color: transparent;
+      }
+
+      .tippy-tooltip.tomato-theme .tippy-backdrop {
+        background-color: tomato;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Show tooltip on click</h2>
+    <button id="firstButton">Click me</button>
+    <dw-tooltip for="firstButton" trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
+    
+    <h2>Show tooltip on mouseenter with html content</h2>
+    <button id="secondButton">Click me</button> 
+    <dw-tooltip for="secondButton" trigger="mouseenter" placement="top" animation="scale">
+      <strong>Bolded content</strong>
+    </dw-tooltip>
+
+    <h2>Show tooltip on focus with 50px is far</h2>
+    <button id="thirdButton">Click me</button> 
+    <dw-tooltip for="thirdButton" trigger="focus" placement="top" animation="scale" offset="50">Tooltip is 50px is far</dw-tooltip>
+    
+    <h2>Show tooltip on mouseenter with placement top-end</h2>
+    <button id="forthButton">Click me</button> 
+    <dw-tooltip for="forthButton" trigger="mouseenter" placement="top-end" animation="scale">Tooltip placement is top-end</dw-tooltip>
+
+    <h2>Show tooltip on mouseenter in disabled case</h2>
+    <div id="disableBtn">
+      <button disabled>Click me</button> 
+    </div>
+    <dw-tooltip for="disableBtn" trigger="mouseenter">disabled tooltip</dw-tooltip>
+
+    <h2>Override css</h2>
+    <button id="sixthButton">Click me</button> 
+    <dw-tooltip for="sixthButton" trigger="mouseenter" theme="tomato">css override</dw-tooltip>
+
+    <noscript>
+      Please enable JavaScript to view this website.
+    </noscript>
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- Built with love using PWA Starter Kit -->
+    <script type="module" src="../dw-tooltip.js"></script>
+  </body>
+</html>
