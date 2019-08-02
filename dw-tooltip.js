@@ -11,31 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 import { html, css, LitElement } from 'lit-element';
 import tippy from 'tippy.js'
 
-/**
-  * Behaviors
-  * - This element is needs to display tooltip
-  * - Tooltip is shown in below four cases
-  *   - "mouseenter", "focus",  "click", "manual". 
-  * - To override theme of tooltip set theme property and set css in body.
-  * - eg if your theme is 'tomato' then css is like that,
-  *  .tippy-tooltip.tomato-theme {
-        background-color: tomato;
-        color: yellow;
-      }
-
-      .tippy-tooltip.tomato-theme[data-animatefill] {
-        background-color: transparent;
-      }
-
-      .tippy-tooltip.tomato-theme .tippy-backdrop {
-        background-color: tomato;
-      }
-    
-  * Usage pattern
-  *   <dw-tooltip for="" trigger="" placement="" animation="" offset=""></dw-tooltip>
-  */
-
-class dwTooltip extends LitElement {
+class DWTooltip extends LitElement {
   static get styles() {
     return [
       css`
@@ -74,7 +50,7 @@ class dwTooltip extends LitElement {
       /**
        * Input property
        * The type of transition animation. 
-       * Possible values:  "shift-away",  "shift-toward", "fade",  "scale", "perspective
+       * Possible values:  "shift-away",  "shift-toward", "fade",  "scale", "perspective".
        * Default value - 'shift-away'
        */
       animation: { type: String },
@@ -92,12 +68,14 @@ class dwTooltip extends LitElement {
       theme : { type: String },
 
       /**
-       * The Tippy instance is an individual tooltip object.
+       * Extra options to be passed to Tippy.js
        */
-      _tippyInstance: { type: Object }
+      extraOptions: {type: Object},
+
     }
+    
   }
-  
+
   render() {
     return html`
       <slot ></slot>
@@ -127,14 +105,16 @@ class dwTooltip extends LitElement {
       throw new Error('Trigger element is not found');
     }
 
-    this._tippyInstance = tippy(elTrigger, {
+    let tippyOptions = {
+      ...this.extraOptions,
       content: elContent,
       trigger: this.trigger,
       placement: this.placement,
       animation: this.animation,
       distance: this.offset,
       theme: this.theme
-    })
+    };
+    this._tippyInstance = tippy(elTrigger, tippyOptions)
   }
 
   /*
@@ -152,4 +132,4 @@ class dwTooltip extends LitElement {
   }
 }
 
-window.customElements.define('dw-tooltip', dwTooltip);
+window.customElements.define('dw-tooltip', DWTooltip);

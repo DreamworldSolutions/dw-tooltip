@@ -1,31 +1,49 @@
-# dw-tooltip
-A Tooltip Webcomponent created through LitElement &amp; Tippy.js
+A Tooltip Webcomponent created through LitElement &amp; [Tippy.js])(https://atomiks.github.io/tippyjs)
 
+## Text tooltip
+```html
+	<paper-button id="my-button">My Button</paper-button>
+	<dw-tooltip for="my-button">I'm tippy tooltip!!!</dw-tooltip>
+```
 
-## Properties
-- for (String)
+## Configs/Options
+It supports all the options supported by Tippy.js. But, following most used options can be configured through properties.
 - trigger
 - offset
 - placement
 - animation
-- extraOptions (Object)
+- theme
 
-## template
-```html
-<div id="tooltip-content"><slot></slot></div>
+Other options you may configure through a special Object property `extraOptions`.
+
+### Theme
+To configure Theme in little bit tricky. Tippy adds tooltip element directly to the `body`. 
+So, You need to add theme css directly into the Body.
+
+e.g. To activate `tomato` theme in the Tippy's demo. You need to add following CSS to the Body.
+```css
+.tippy-tooltip.tomato-theme {
+	background-color: tomato;
+	color: yellow;
+}
+
+.tippy-tooltip.tomato-theme[data-animatefill] {
+	background-color: transparent;
+}
+
+.tippy-tooltip.tomato-theme .tippy-backdrop {
+	background-color: tomato;
+}
 ```
 
-## local variables in logic:
-
-elContent
-elTrigger
-
-## Example
+## HTML content tooltip
 ```html
-<paper-button id="hell-button">Click me</paper-button>
-<dw-tooltip for="hello-button">
-	<span>sdfsd</span>
-	<paper-button>OK</paper-button>
-</dw-tooltip>
+	<paper-button id="my-button">My Button</paper-button>
+	<dw-tooltip for="my-button">
+		<span>I'm tippy tooltip!!!</span>
+	</dw-tooltip>
 ```
 
+> We haven't tried this yet, but there might be a styling issue in this as well. 
+> Becuase, Tippy moves `span` inside it's tooltip dom. Which is appended directly to the Body. 
+> So, CSS written through the element's `style` property won't work. Though Inline CSS should work.
