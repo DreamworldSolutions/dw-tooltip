@@ -50,4 +50,4 @@ e.g. To activate `tomato` theme in the Tippy's demo. You need to add following C
 
 
 ## Known issues
-- `trigger=focus` isn't working on iOS Safari. 
+- `trigger=focus` isn't working on iOS Safari + Chrome. 
