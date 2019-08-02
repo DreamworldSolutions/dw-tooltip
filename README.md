@@ -47,3 +47,7 @@ e.g. To activate `tomato` theme in the Tippy's demo. You need to add following C
 > We haven't tried this yet, but there might be a styling issue in this as well. 
 > Becuase, Tippy moves `span` inside it's tooltip dom. Which is appended directly to the Body. 
 > So, CSS written through the element's `style` property won't work. Though Inline CSS should work.
+
+
+## Known issues
+- `trigger=focus` isn't working on iOS Safari. 
