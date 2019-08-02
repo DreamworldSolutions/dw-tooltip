@@ -1,4 +1,4 @@
-A Tooltip Webcomponent created through LitElement &amp; [Tippy.js])(https://atomiks.github.io/tippyjs)
+A Tooltip Webcomponent created through LitElement and [Tippy.js](https://atomiks.github.io/tippyjs)
 
 ## Usage
 ```html
