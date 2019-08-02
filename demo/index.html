@@ -60,9 +60,22 @@
     <button id="sixthButton">Click me</button> 
     <dw-tooltip for="sixthButton" trigger="mouseenter" theme="tomato">css override</dw-tooltip>
 
+    <h2>Show tooltip with extraOptions</h2>
+    <button id="seventhButton">Click me</button>
+    <dw-tooltip id="dw-tooltip" for="seventhButton" trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
+
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
+     
+    <script>
+      let extraOptions = {
+        arrow: true,
+        arrowType: 'round'
+      };
+
+      this.document.querySelector('#dw-tooltip').extraOptions = extraOptions;
+    </script>
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <!-- Built with love using PWA Starter Kit -->

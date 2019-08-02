@@ -70,8 +70,7 @@ class DWTooltip extends LitElement {
       /**
        * Extra options to be passed to Tippy.js
        */
-      extraOptions: {type: Object},
-
+      extraOptions: { type: Object }
     }
     
   }
@@ -100,9 +99,15 @@ class DWTooltip extends LitElement {
     if((previousElementSibling.id == this.for) || (nextElementSibling.id == this.for)){
       elTrigger = previousElementSibling;
     }
-
+    
     if(!elTrigger){
       throw new Error('Trigger element is not found');
+    }
+    
+    let hideOnClick = true;
+
+    if(this.trigger == 'focus'){
+      hideOnClick = false;
     }
 
     let tippyOptions = {
@@ -112,9 +117,10 @@ class DWTooltip extends LitElement {
       placement: this.placement,
       animation: this.animation,
       distance: this.offset,
-      theme: this.theme
+      theme: this.theme,
+      hideOnClick: hideOnClick
     };
-    this._tippyInstance = tippy(elTrigger, tippyOptions)
+    this._tippyInstance = tippy(elTrigger, tippyOptions);
   }
 
   /*
