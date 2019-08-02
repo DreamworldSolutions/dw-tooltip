@@ -1,6 +1,6 @@
 A Tooltip Webcomponent created through LitElement &amp; [Tippy.js])(https://atomiks.github.io/tippyjs)
 
-## Text tooltip
+## Usage
 ```html
 	<paper-button id="my-button">My Button</paper-button>
 	<dw-tooltip for="my-button">I'm tippy tooltip!!!</dw-tooltip>
