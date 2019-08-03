@@ -136,6 +136,22 @@ class DWTooltip extends LitElement {
   hide(){
     this._tippyInstance.hide();
   }
+
+  /*
+   * hide and show tooltip programatically.
+   */
+  toggle(){
+    let tippyInstance = this._tippyInstance;
+    
+    if(tippyInstance && tippyInstance.state){
+      if(!tippyInstance.state.isShown && !tippyInstance.state.isMounted){
+        this.show();
+        return;
+      }
+      
+      this.hide();
+    }
+  }
 }
 
 window.customElements.define('dw-tooltip', DWTooltip);
