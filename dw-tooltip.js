@@ -89,7 +89,14 @@ class DWTooltip extends LitElement {
     this.offset = 0;
     this.theme = 'dark';
   }
-
+  
+  disconnectedCallback(){
+    super.disconnectedCallback();
+    if(this._tippyInstance){
+      this._tippyInstance.destroy();
+    }
+  }
+  
   firstUpdated(){
     let elTrigger;
     let elContent = this.innerHTML;
