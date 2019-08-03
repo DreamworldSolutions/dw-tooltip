@@ -70,7 +70,12 @@ class DWTooltip extends LitElement {
       /**
        * Extra options to be passed to Tippy.js
        */
-      extraOptions: { type: Object }
+      extraOptions: { type: Object },
+
+      /**
+       * When you want to temporarily disable this tooltip, se to `true`.
+       */
+      disabled: { type: Boolean }
     }
     
   }
@@ -88,6 +93,7 @@ class DWTooltip extends LitElement {
     this.animation = 'shift-away';
     this.offset = 0;
     this.theme = 'dark';
+    this.disabled = false;
   }
   
   disconnectedCallback(){
@@ -128,6 +134,7 @@ class DWTooltip extends LitElement {
       hideOnClick: hideOnClick
     };
     this._tippyInstance = tippy(elTrigger, tippyOptions);
+    this.disabled  && this._refreshDisabled();
   }
 
   /*
@@ -158,6 +165,23 @@ class DWTooltip extends LitElement {
       
       this.hide();
     }
+  }
+  
+  updated(changedProprs){
+    if(changedProprs.has('disabled')){
+      this._refreshDisabled();
+    }
+  }
+  
+  /*
+   * disabled and eanbled tooltip
+   */
+  _refreshDisabled(){
+    if(!this._tippyInstance){
+      return;
+    }
+    
+    this.disabled ? this._tippyInstance.disable(): this._tippyInstance.enable();
   }
 }
 

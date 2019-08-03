@@ -13,6 +13,7 @@ It supports all the options supported by Tippy.js. But, following most used opti
 - placement
 - animation
 - theme
+- disabled
 
 Other options you may configure through a special Object property `extraOptions`.
 
