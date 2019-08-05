@@ -32,6 +32,11 @@
     </style>
   </head>
   <body>
+    
+    <h2>Show tooltip with manual trigger</h2>
+    <button id="maunallyTrigger" onclick="toogle()">Click me</button>
+    <dw-tooltip id="maunalTrigger" for="maunallyTrigger" trigger="manual" placement="bottom" animation="shift-away">show button munual tooltip</dw-tooltip>
+
     <h2>Show tooltip on click</h2>
     <button id="firstButton">Click me</button>
     <dw-tooltip for="firstButton" trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
@@ -69,6 +74,10 @@
     </noscript>
      
     <script>
+      function toogle(){
+        this.document.querySelector('#maunalTrigger').toggle();
+      }
+
       let extraOptions = {
         arrow: true,
         arrowType: 'round'
