@@ -25,9 +25,17 @@ class DWTooltip extends LitElement {
   static get properties() {
     return {
       /*
+       * Input property
        * The id of the element that the tooltip is anchored to. This element must be a sibling of the tooltip. 
+       * Ignore when `forEl` proeprty is defined
        */
       for: { type: String },
+
+      /**
+       * Input property
+       * Javascritp element. `for` property will be ignored if this property has value.
+       */
+      forEl: { type: Object },
 
       /**
        * Input property
@@ -106,11 +114,15 @@ class DWTooltip extends LitElement {
   firstUpdated(){
     let elTrigger;
     let elContent = this.innerHTML;
-    let previousElementSibling = this.previousElementSibling;
-    let nextElementSibling = this.nextElementSibling;
-
-    if((previousElementSibling.id == this.for) || (nextElementSibling.id == this.for)){
-      elTrigger = previousElementSibling;
+    if(this.forEl) {
+      elTrigger = this.forEl;
+    }else {
+      let previousElementSibling = this.previousElementSibling;
+      let nextElementSibling = this.nextElementSibling;
+  
+      if((previousElementSibling.id == this.for) || (nextElementSibling.id == this.for)){
+        elTrigger = previousElementSibling;
+      }
     }
     
     if(!elTrigger){
