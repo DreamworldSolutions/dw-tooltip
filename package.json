@@ -1,6 +1,6 @@
 {
   "name": "@dreamworld/dw-tooltip",
-  "version": "1.2.0",
+  "version": "0.0.0-development",
   "description": "",
   "main": "dw-tooltip.js",
   "scripts": {
@@ -13,6 +13,10 @@
     "tippy.js": "^4.3.4"
   },
   "devDependencies": {
-    "@webcomponents/webcomponentsjs": "^2.2.10"
+    "@webcomponents/webcomponentsjs": "^2.2.10",
+     "semantic-release": "beta"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
