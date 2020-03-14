@@ -104,14 +104,23 @@ class DWTooltip extends LitElement {
     this.disabled = false;
   }
   
+  connectedCallback(){
+    super.connectedCallback && super.connectedCallback();
+
+    this._initializeTippy();
+  }
+
   disconnectedCallback(){
     super.disconnectedCallback();
     if(this._tippyInstance){
       this._tippyInstance.destroy();
     }
   }
-  
-  firstUpdated(){
+
+  /**
+   * initialize tippy.
+   */
+  _initializeTippy(){
     let elTrigger;
     let elContent = this.innerHTML;
     if(this.forEl) {
