@@ -67,7 +67,7 @@
 
     <h2>Show tooltip with extraOptions</h2>
     <button id="seventhButton">Click me</button>
-    <dw-tooltip id="dw-tooltip" for="seventhButton" trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
+    <dw-tooltip id="dw-tooltip" for="seventhButton" extraOptions='{"arrow":true,"arrowType":"round", "hideOnClick": false}' trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
 
     <noscript>
       Please enable JavaScript to view this website.
@@ -77,13 +77,6 @@
       function toogle(){
         this.document.querySelector('#maunalTrigger').toggle();
       }
-
-      let extraOptions = {
-        arrow: true,
-        arrowType: 'round'
-      };
-
-      this.document.querySelector('#dw-tooltip').extraOptions = extraOptions;
     </script>
     <!-- Built with love using PWA Starter Kit -->
     <script type="module" src="../dw-tooltip.js"></script>

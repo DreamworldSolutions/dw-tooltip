@@ -137,13 +137,14 @@ class DWTooltip extends LitElement {
     if(!elTrigger){
       throw new Error('Trigger element is not found');
     }
-    
-    let hideOnClick = true;
 
-    if(this.trigger == 'focus'){
-      hideOnClick = false;
+    let hideOnClick = this.extraOptions && this.extraOptions.hideOnClick;
+
+    // This is added for the backward compatibility
+    if(!Object(this.extraOptions).hasOwnProperty('hideOnClick')){
+      hideOnClick = this.trigger === 'focus' ? false : true;
     }
-
+    
     let tippyOptions = {
       ...this.extraOptions,
       content: elContent,
