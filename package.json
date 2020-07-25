@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "lit-element": "^2.2.0",
-    "tippy.js": "^4.3.4"
+    "tippy.js": "^4.3.4",
+    "@dreamworld/pwa-helpers": "^1.7.1"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.10",
