@@ -5,6 +5,10 @@
     <title>Dw tooltip</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="dw tooltip">
+    <link rel="stylesheet" href="/node_modules/tippy.js/themes/material.css">
+    <link rel="stylesheet" href="/node_modules/tippy.js/animations/scale.css">
+    <link rel="stylesheet" href="/node_modules/tippy.js/animations/shift-away.css">
+
     <style>
       button {
         width: 100px;
@@ -17,18 +21,18 @@
       div#disableBtn {
         width: 150px;
       }
-      .tippy-tooltip.tomato-theme {
+
+      .tippy-box {
+        border-radius: 8px;
+        color: #FFF;
+        padding: 8px;
+      }
+
+      [data-theme="tomato"] {
         background-color: tomato;
         color: yellow;
       }
 
-      .tippy-tooltip.tomato-theme[data-animatefill] {
-        background-color: transparent;
-      }
-
-      .tippy-tooltip.tomato-theme .tippy-backdrop {
-        background-color: tomato;
-      }
     </style>
   </head>
   <body>
@@ -42,7 +46,7 @@
     <dw-tooltip for="firstButton" trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
     
     <h2>Show tooltip on mouseenter with html content</h2>
-    <button id="secondButton">Click me</button> 
+    <button id="secondButton">Hover on me</button> 
     <dw-tooltip for="secondButton" trigger="mouseenter" placement="top" animation="scale">
       <strong>Bolded content</strong>
     </dw-tooltip>
@@ -59,21 +63,22 @@
     <div id="disableBtn">
       <button disabled>Click me</button> 
     </div>
-    <dw-tooltip for="disableBtn" trigger="mouseenter">disabled tooltip</dw-tooltip>
+    <dw-tooltip for="disableBtn" trigger="mouseenter" disabled>disabled tooltip</dw-tooltip>
 
     <h2>Override css</h2>
     <button id="sixthButton">Click me</button> 
-    <dw-tooltip for="sixthButton" trigger="mouseenter" theme="tomato">css override</dw-tooltip>
+    <dw-tooltip for="sixthButton" trigger="click" theme="tomato">css override</dw-tooltip>
 
     <h2>Show tooltip with extraOptions</h2>
     <button id="seventhButton">Click me</button>
-    <dw-tooltip id="dw-tooltip" for="seventhButton" extraOptions='{"arrow":true,"arrowType":"round", "hideOnClick": false}' trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
+    <dw-tooltip id="dw-tooltip" for="seventhButton" extraOptions='{"arrow":true, "hideOnClick": false}' trigger="click" placement="bottom" animation="shift-away">show button tooltip</dw-tooltip>
 
     <noscript>
       Please enable JavaScript to view this website.
     </noscript>
      
     <script>
+      (window.process = window.process || {}).env = {};
       function toogle(){
         this.document.querySelector('#maunalTrigger').toggle();
       }

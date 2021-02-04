@@ -4,6 +4,7 @@
   "description": "",
   "main": "dw-tooltip.js",
   "scripts": {
+    "start": "polymer serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -11,7 +12,7 @@
   "dependencies": {
     "@dreamworld/pwa-helpers": "^1.7.1",
     "lit-element": "^2.2.0",
-    "tippy.js": "^4.3.4"
+    "tippy.js": "^6.2.7"
   },
   "devDependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.10",
