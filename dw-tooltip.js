@@ -101,7 +101,7 @@ class DWTooltip extends LitElement {
     this.placement = 'top';
     this.animation = 'shift-away';
     this.offset = 0;
-    this.theme = 'dark';
+    this.theme = 'material';
     this.disabled = false;
   }
   
@@ -148,11 +148,12 @@ class DWTooltip extends LitElement {
     
     let tippyOptions = {
       ...this.extraOptions,
+      allowHTML: true,
       content: elContent,
       trigger: this.trigger,
       placement: this.placement,
       animation: this.animation,
-      distance: this.offset,
+      offset: this.offset,
       theme: this.theme,
       hideOnClick: hideOnClick
     };
