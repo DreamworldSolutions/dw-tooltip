@@ -67,9 +67,9 @@ class DWTooltip extends LitElement {
       /**
        * Input property
        * How far in pixels the tippy element is from the reference element.
-       * Default value - 0
+       * Default value - [0, 0]
        */
-      offset: { type: Number },
+      offset: { type: Array },
 
       /*
        * Themes added as classes (each separated by a space) to the tippy element's  classList
@@ -99,7 +99,7 @@ class DWTooltip extends LitElement {
     this.trigger = 'mouseenter';
     this.placement = 'top';
     this.animation = 'shift-away';
-    this.offset = 0;
+    this.offset = [0, 0];
     this.theme = 'material';
     this.disabled = false;
   }
