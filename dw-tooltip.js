@@ -48,6 +48,12 @@ class DWTooltip extends LitElement {
       trigger: { type: String },
 
       /**
+       * Input property.
+       * When content is not provided as a property, shows light-doms in tooltip.
+       */
+      content: { type: Object },
+
+      /**
        * Input property
        * Positions the tippy relative to its reference element. 
        * Use the suffix -start or -end to shift the tippy to the start or end of the reference element, instead of centering it. 
@@ -121,7 +127,7 @@ class DWTooltip extends LitElement {
    */
   _initializeTippy(){
     let elTrigger;
-    let elContent = this.innerHTML;
+    let elContent = this.content || this.innerHTML;
     if(this.forEl) {
       elTrigger = this.forEl;
     }else {
@@ -187,6 +193,13 @@ class DWTooltip extends LitElement {
       
       this.hide();
     }
+  }
+
+  update(changedProps) {
+    if (changedProps.has('content')) {
+      this._tippyInstance && this._tippyInstance.setContent(this.content);
+    }
+    super.update(changedProps);
   }
   
   updated(changedProprs){
