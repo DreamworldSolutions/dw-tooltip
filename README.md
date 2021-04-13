@@ -9,6 +9,7 @@ A Tooltip Webcomponent created through LitElement and [Tippy.js](https://atomiks
 ## Configs/Options
 It supports all the options supported by Tippy.js. But, following most used options can be configured through properties.
 - trigger
+- content (When it's not set, gets content from light-dom `this.innerHTML`)
 - offset
 - placement
 - animation
