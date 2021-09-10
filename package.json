@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dreamworld/pwa-helpers": "^1.7.1",
+    "@dreamworld/pwa-helpers": "^1.11.1",
     "lit-element": "^2.2.0",
     "tippy.js": "^6.2.7"
   },
