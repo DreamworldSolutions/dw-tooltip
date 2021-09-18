@@ -12,7 +12,7 @@ import { html, css } from 'lit-element';
 import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
 import tippy from 'tippy.js'
 
-class DWTooltip extends LitElement {
+export class DWTooltip extends LitElement {
   static get styles() {
     return [
       css`
