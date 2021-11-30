@@ -206,6 +206,12 @@ export class DWTooltip extends LitElement {
     if(changedProprs.has('disabled')){
       this._refreshDisabled();
     }
+
+    if(changedProprs.has('theme')){
+      this._tippyInstance.setProps({
+        theme: this.theme
+      });
+    }
   }
   
   /*
