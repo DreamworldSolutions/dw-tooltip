@@ -90,7 +90,13 @@ export class DWTooltip extends LitElement {
       /**
        * When you want to temporarily disable this tooltip, se to `true`.
        */
-      disabled: { type: Boolean }
+      disabled: { type: Boolean },
+
+      /**
+       * When you want tip sticky with trigger el, se to `true`.
+       * See additional details here: https://atomiks.github.io/tippyjs/v6/all-props/#sticky
+       */
+      sticky: { type: Boolean }
     }
   }
 
@@ -108,6 +114,7 @@ export class DWTooltip extends LitElement {
     this.offset = [0, 0];
     this.theme = 'material';
     this.disabled = false;
+    this.sticky = false;
   }
   
   connectedCallback(){
@@ -153,7 +160,7 @@ export class DWTooltip extends LitElement {
     let tippyOptions = {
       ...this.extraOptions,
       allowHTML: true,
-      sticky: true,
+      sticky: this.sticky,
       content: elContent,
       trigger: this.trigger,
       placement: this.placement,
