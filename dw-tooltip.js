@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 import { html, css } from 'lit-element';
 import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
-import tippy from 'tippy.js'
+import tippy, {sticky} from 'tippy.js'
 
 export class DWTooltip extends LitElement {
   static get styles() {
@@ -153,13 +153,15 @@ export class DWTooltip extends LitElement {
     let tippyOptions = {
       ...this.extraOptions,
       allowHTML: true,
+      sticky: true,
       content: elContent,
       trigger: this.trigger,
       placement: this.placement,
       animation: this.animation,
       offset: this.offset,
       theme: this.theme,
-      hideOnClick: hideOnClick
+      hideOnClick: hideOnClick,
+      plugins: [sticky]
     };
     this._tippyInstance = tippy(elTrigger, tippyOptions);
     this.disabled  && this._refreshDisabled();
