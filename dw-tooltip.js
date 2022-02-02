@@ -12,6 +12,8 @@ import { html, css } from 'lit-element';
 import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
 import tippy, {sticky} from 'tippy.js'
 
+let appendToElement;
+
 export class DWTooltip extends LitElement {
   static get styles() {
     return [
@@ -96,8 +98,34 @@ export class DWTooltip extends LitElement {
        * When you want tip sticky with trigger el, se to `true`.
        * See additional details here: https://atomiks.github.io/tippyjs/v6/all-props/#sticky
        */
-      sticky: { type: Boolean }
+      sticky: { type: Boolean },
+
+      /**
+       * The element where tooltip is append. 
+       */
+      appendTo: { type: Object}
     }
+  }
+
+  set appendTo(value) {
+    let oldValue = this.__layout;
+    
+    if (oldValue === value) {
+      return;
+    }
+
+    if(value) {
+      this._tippyInstance.setProps({
+        appendTo: value,
+      });
+    }
+    
+    this._appendTo = value;
+    this.requestUpdate('appendTo', oldValue);
+  }
+
+  get appendTo() {
+    return this._appendTo;
   }
 
   render() {
@@ -168,7 +196,8 @@ export class DWTooltip extends LitElement {
       offset: this.offset,
       theme: this.theme,
       hideOnClick: hideOnClick,
-      plugins: [sticky]
+      plugins: [sticky],
+      appendTo: this.appendTo ? this.appendTo : appendToElement
     };
     this._tippyInstance = tippy(elTrigger, tippyOptions);
     this.disabled  && this._refreshDisabled();
@@ -227,6 +256,10 @@ export class DWTooltip extends LitElement {
     
     this.disabled ? this._tippyInstance.disable(): this._tippyInstance.enable();
   }
+
+  static setAppendTo(element) {
+    appendToElement = element;
+  }  
 }
 
 window.customElements.define('dw-tooltip', DWTooltip);
