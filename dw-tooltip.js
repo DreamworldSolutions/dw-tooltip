@@ -11,6 +11,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 import { html, css } from 'lit-element';
 import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
 import tippy, {sticky} from 'tippy.js'
+import { caption } from '@dreamworld/material-styles/typography-literals.js';
+
+let appendToElement;
+
+export const DWTooltipStyle = css`
+  background-color: var(--dw-tooltip-background-color);
+  color: var(--dw-tooltip-text-color, var(--mdc-theme-surface));
+  border-radius: var(--dw-tooltip-border-radius, 4px);
+  padding: var(--dw-tooltip-padding, 8px);
+  ${caption};
+`;
 
 export class DWTooltip extends LitElement {
   static get styles() {
@@ -96,8 +107,34 @@ export class DWTooltip extends LitElement {
        * When you want tip sticky with trigger el, se to `true`.
        * See additional details here: https://atomiks.github.io/tippyjs/v6/all-props/#sticky
        */
-      sticky: { type: Boolean }
+      sticky: { type: Boolean },
+
+      /**
+       * The element where tooltip is append. 
+       */
+      appendTo: { type: Object}
     }
+  }
+
+  set appendTo(value) {
+    let oldValue = this.__layout;
+    
+    if (oldValue === value) {
+      return;
+    }
+
+    if(value) {
+      this._tippyInstance.setProps({
+        appendTo: value,
+      });
+    }
+    
+    this._appendTo = value;
+    this.requestUpdate('appendTo', oldValue);
+  }
+
+  get appendTo() {
+    return this._appendTo;
   }
 
   render() {
@@ -168,7 +205,8 @@ export class DWTooltip extends LitElement {
       offset: this.offset,
       theme: this.theme,
       hideOnClick: hideOnClick,
-      plugins: [sticky]
+      plugins: [sticky],
+      appendTo: this.appendTo ? this.appendTo : appendToElement
     };
     this._tippyInstance = tippy(elTrigger, tippyOptions);
     this.disabled  && this._refreshDisabled();
@@ -227,6 +265,14 @@ export class DWTooltip extends LitElement {
     
     this.disabled ? this._tippyInstance.disable(): this._tippyInstance.enable();
   }
+
+  /**
+   * It's used to append tooltip into the specified element.
+   * @param {Object} element 
+   */
+  static setAppendTo(element) {
+    appendToElement = element;
+  }  
 }
 
 window.customElements.define('dw-tooltip', DWTooltip);
