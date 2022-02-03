@@ -17,7 +17,7 @@ let appendToElement;
 
 export const DWTooltipStyle = css`
   background-color: var(--dw-tooltip-background-color);
-  color: var(--mdc-theme-surface);
+  color: var(--dw-tooltip-text-color, var(--mdc-theme-surface));
   border-radius: var(--dw-tooltip-border-radius, 4px);
   padding: var(--dw-tooltip-padding, 8px);
   ${caption};
