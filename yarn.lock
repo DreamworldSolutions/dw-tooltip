@@ -23,6 +23,13 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
+"@dreamworld/material-styles@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@dreamworld/material-styles/-/material-styles-2.1.0.tgz#0dd284f697ac947832f4e2124aae58d00821c059"
+  integrity sha512-jj+79Ei/5m3Jzh5ePpNHs7ZiY1T843l8CVKAKZxKofpfoq7hDVfK1VfNqKunXQf6sToWeIABhW4b1EDi9LjI+A==
+  dependencies:
+    lit-element "^2.2.0"
+
 "@dreamworld/pwa-helpers@^1.7.1":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@dreamworld/pwa-helpers/-/pwa-helpers-1.11.0.tgz#d3cff515e26631b04bf14c43affb9f590e914697"
