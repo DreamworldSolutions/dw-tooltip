@@ -4,13 +4,13 @@
   "description": "",
   "main": "dw-tooltip.js",
   "scripts": {
-    "start":"wds --node-resolve --app-index demo/index.html --open --watch",
+    "start": "wds --node-resolve --app-index demo/index.html --open --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dreamworld/material-styles": "^2.1.0",
+    "@dreamworld/material-styles": "https://github.com/DreamworldSolutions/material-styles.git#feature/upgrade-to-lit",
     "@dreamworld/pwa-helpers": "^1.13.1",
     "tippy.js": "^6.2.7"
   },
