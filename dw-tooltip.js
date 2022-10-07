@@ -8,19 +8,18 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 */
 
-import { html, css } from 'lit-element';
-import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
+import { LitElement, html, css, unsafeCSS } from '@dreamworld/pwa-helpers/lit.js';
 import tippy, {sticky} from 'tippy.js'
 import { caption } from '@dreamworld/material-styles/typography-literals.js';
 
 let appendToElement;
 
 export const DWTooltipStyle = css`
-  background-color: var(--dw-tooltip-background-color);
-  color: var(--dw-tooltip-text-color, var(--mdc-theme-surface));
+  background-color : var(--dw-tooltip-background-color);
+  color : var(--dw-tooltip-text-color, var(--mdc-theme-surface));
   border-radius: var(--dw-tooltip-border-radius, 4px);
   padding: var(--dw-tooltip-padding, 8px);
-  ${caption};
+  ${unsafeCSS(caption)};
 `;
 
 export class DWTooltip extends LitElement {
