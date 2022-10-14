@@ -44,9 +44,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@dreamworld/material-styles@https://github.com/DreamworldSolutions/material-styles.git#feature/upgrade-to-lit":
-  version "0.0.0-development"
-  resolved "https://github.com/DreamworldSolutions/material-styles.git#29c73b0e6e36e882ff081533be7d5d49b48a52f8"
+"@dreamworld/material-styles@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@dreamworld/material-styles/-/material-styles-3.0.0.tgz#3c7134fc028960b22d06027c3097b7583e272798"
+  integrity sha512-t/aNJFGiU5VA3b99cbKdiwtqrEebiDQDa5zWaC4jJcEmvBF2u/l4e6r5SRYE8nF78HpjLHxKDXf0pmy7Xj//9A==
   dependencies:
     "@dreamworld/pwa-helpers" "^1.13.1"
 

@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dreamworld/material-styles": "https://github.com/DreamworldSolutions/material-styles.git#feature/upgrade-to-lit",
+    "@dreamworld/material-styles": "^3.0.0",
     "@dreamworld/pwa-helpers": "^1.13.1",
     "tippy.js": "^6.2.7"
   },
