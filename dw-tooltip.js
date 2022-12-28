@@ -122,7 +122,7 @@ export class DWTooltip extends LitElement {
       return;
     }
 
-    if(value) {
+    if(value && this._tippyInstance) {
       this._tippyInstance.setProps({
         appendTo: value,
       });
