@@ -274,4 +274,4 @@ export class DWTooltip extends LitElement {
   }  
 }
 
-window.customElements.define('dw-tooltip', DWTooltip);
+customElements.define('dw-tooltip', DWTooltip);
