@@ -47,7 +47,6 @@ export const DWTooltipStyle = css`
   .tippy-box [hidden] {
     display: none !important;
   }
-  
 `;
 
 export class DWTooltip extends LitElement {
