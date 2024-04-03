@@ -15,11 +15,38 @@ import { caption } from '@dreamworld/material-styles/typography-literals.js';
 let appendToElement;
 
 export const DWTooltipStyle = css`
-  background-color : var(--dw-tooltip-background-color);
-  color : var(--dw-tooltip-text-color, var(--mdc-theme-surface));
-  border-radius: var(--dw-tooltip-border-radius, 4px);
-  padding: var(--dw-tooltip-padding, 8px);
-  ${unsafeCSS(caption)};
+  .tippy-box {
+    background-color: var(--dw-tooltip-background-color);
+    color: var(--dw-tooltip-text-color, var(--mdc-theme-surface));
+    border-radius: var(--dw-tooltip-border-radius, 4px);
+    padding: var(--dw-tooltip-padding, 8px);
+    ${unsafeCSS(caption)};
+  }
+
+  .tippy-box[data-animation="shift-away"][data-state="hidden"] {
+    opacity: 0;
+  }
+
+  .tippy-box[data-animation="shift-away"][data-state="hidden"][data-placement^="top"] {
+    transform: translateY(10px);
+  }
+
+  .tippy-box[data-animation="shift-away"][data-state="hidden"][data-placement^="bottom"] {
+    transform: translateY(-10px);
+  }
+
+  .tippy-box[data-animation="shift-away"][data-state="hidden"][data-placement^="left"] {
+    transform: translateX(10px);
+  }
+
+  .tippy-box[data-animation="shift-away"][data-state="hidden"][data-placement^="right"] {
+    transform: translateX(-10px);
+  }
+
+  .tippy-box *[hidden],
+  .tippy-box [hidden] {
+    display: none !important;
+  }
 `;
 
 export class DWTooltip extends LitElement {
