@@ -236,7 +236,7 @@ export class DWTooltip extends LitElement {
     };
     this._tippyInstance = tippy(elTrigger, tippyOptions);
     this.disabled  && this._refreshDisabled();
-  }
+  } 
 
   /*
    * Shows the tooltip programatically
