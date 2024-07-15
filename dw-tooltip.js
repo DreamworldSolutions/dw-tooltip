@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { LitElement, html, css, unsafeCSS } from '@dreamworld/pwa-helpers/lit.js';
-import tippy, {sticky} from 'tippy.js'
+import tippy, {sticky, followCursor} from 'tippy.js'
 import { caption } from '@dreamworld/material-styles/typography-literals.js';
 
 let appendToElement;
@@ -231,12 +231,12 @@ export class DWTooltip extends LitElement {
       offset: this.offset,
       theme: this.theme,
       hideOnClick: hideOnClick,
-      plugins: [sticky],
+      plugins: [sticky, followCursor],
       appendTo: this.appendTo ? this.appendTo : appendToElement
     };
     this._tippyInstance = tippy(elTrigger, tippyOptions);
     this.disabled  && this._refreshDisabled();
-  }
+  } 
 
   /*
    * Shows the tooltip programatically
