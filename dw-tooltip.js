@@ -16,6 +16,7 @@ let appendToElement;
 
 export const DWTooltipStyle = css`
   .tippy-box {
+    --mdc-theme-primary: var(--mdc-theme-primary-invert-color);
     background-color: var(--dw-tooltip-background-color);
     color: var(--dw-tooltip-text-color, var(--mdc-theme-surface));
     border-radius: var(--dw-tooltip-border-radius, 4px);
@@ -65,13 +66,13 @@ export class DWTooltip extends LitElement {
       /*
        * Input property
        * The id of the element that the tooltip is anchored to. This element must be a sibling of the tooltip. 
-       * Ignore when `forEl` proeprty is defined
+       * Ignore when `forEl` property is defined
        */
       for: { type: String },
 
       /**
        * Input property
-       * Javascritp element. `for` property will be ignored if this property has value.
+       * Javascript element. `for` property will be ignored if this property has value.
        */
       forEl: { type: Object },
 
@@ -282,7 +283,7 @@ export class DWTooltip extends LitElement {
   }
   
   /*
-   * disabled and eanbled tooltip
+   * disabled and enabled tooltip
    */
   _refreshDisabled(){
     if(!this._tippyInstance){
