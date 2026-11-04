@@ -269,11 +269,11 @@ export class DWTooltip extends LitElement {
     }
   }
 
-  update(changedProps) {
+  willUpdate(changedProps) {
     if (changedProps.has('content')) {
       this._tippyInstance && this._tippyInstance.setContent(this.content);
     }
-    super.update(changedProps);
+    super.willUpdate(changedProps);
   }
   
   updated(changedProprs){
