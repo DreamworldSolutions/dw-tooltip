@@ -211,7 +211,8 @@ export class DWTooltip extends LitElement {
     }
     
     if(!elTrigger){
-      throw new Error('Trigger element is not found');
+      console.error('dw-tooltip > trigger element is not found', { for: this.for, elContent });
+      return;
     }
 
     let hideOnClick = this.extraOptions && this.extraOptions.hideOnClick;
@@ -221,7 +222,14 @@ export class DWTooltip extends LitElement {
       hideOnClick = this.trigger === 'focus' ? false : true;
     }
     
+    const self = this;
     let tippyOptions = {
+      onShown(instance) {
+        self.dispatchEvent(new CustomEvent('shown-tooltip', { detail: { instance } }));
+      },
+      onHidden(instance) {
+        self.dispatchEvent(new CustomEvent('hidden-tooltip', { detail: { instance } }));
+      },
       ...this.extraOptions,
       allowHTML: true,
       sticky: this.sticky,
@@ -233,7 +241,8 @@ export class DWTooltip extends LitElement {
       theme: this.theme,
       hideOnClick: hideOnClick,
       plugins: [sticky, followCursor],
-      appendTo: this.appendTo ? this.appendTo : appendToElement
+      // An `appendTo` in extraOptions (as 2.x read it) is kept when the property is not set.
+      appendTo: this.appendTo || (this.extraOptions && this.extraOptions.appendTo) || appendToElement
     };
     this._tippyInstance = tippy(elTrigger, tippyOptions);
     this.disabled  && this._refreshDisabled();
